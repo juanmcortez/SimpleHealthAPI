@@ -2,7 +2,7 @@
 
 namespace App\Policies\V1\Patients;
 
-use App\Models\Users\User;
+use App\Models\V1\Users\User;
 use App\Models\V1\Patients\Patient;
 use Illuminate\Auth\Access\Response;
 
