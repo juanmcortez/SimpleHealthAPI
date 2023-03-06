@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id('pid');
 
+            $table->unsignedBigInteger('persona_ID')->nullable()->comment('ID of the model for the persona details');
+
             $table->timestamps();
             $table->softDeletes();
         });
