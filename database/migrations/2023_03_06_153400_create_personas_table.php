@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
 
+            $table->string('first_name', 64)->index()->nullable();
+            $table->string('middle_name', 12)->nullable();
+            $table->string('last_name', 64)->index()->nullable();
+
+            $table->date('date_of_birth')->index();
+            $table->string('gender', 12)->nullable()->default('male');
+
             $table->timestamps();
             $table->softDeletes();
         });
