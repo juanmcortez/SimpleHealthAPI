@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\V1\Users;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Users\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\V1\Users\User>
  */
 class UserFactory extends Factory
 {
