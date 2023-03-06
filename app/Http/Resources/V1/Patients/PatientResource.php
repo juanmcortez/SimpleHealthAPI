@@ -24,7 +24,7 @@ class PatientResource extends JsonResource
     {
         return [
             'PID'       => $this->pid,
-            'created'   => $this->created_at->format('Y-m-d H:i'),
+            'created'   => $this->created_at->format(config('app.format.datetime')),
         ];
     }
 }
