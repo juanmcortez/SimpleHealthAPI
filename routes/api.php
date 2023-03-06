@@ -17,13 +17,13 @@ use App\Http\Controllers\V1\Patients\PatientController;
 
 // V1 API Access
 Route::prefix('V1')->group(function () {
-
+    // User default route -to be removed-
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         return $request->user();
     });
 
-    Route::prefix('patients')->group(function () {
-        Route::get('/all', [PatientController::class, 'index']);
-        Route::get('/show/{patient}', [PatientController::class, 'show']);
-    });
+    // Resources for the API
+    Route::resources([
+        'patients' =>  PatientController::class,
+    ]);
 });
