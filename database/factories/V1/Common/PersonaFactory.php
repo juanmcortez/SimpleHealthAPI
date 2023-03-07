@@ -21,7 +21,7 @@ class PersonaFactory extends Factory
      */
     public function definition(): array
     {
-        $gender = fake()->randomElement(PersonaGender::cases());
+        $gender = fake()->randomElement(PersonaGender::cases())->value;
         return [
             'first_name'        => fake()->firstName($gender),
             'middle_name'       => Str::upper(Str::substr(fake()->firstName($gender), 0, 1)),

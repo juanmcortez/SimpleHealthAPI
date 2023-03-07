@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum PersonaGender: string
 {
-    case Male           = 'male';
-    case Female         = 'female';
-    case Undisclosed    = 'undisclosed';
+    case Male           = 'MALE';
+    case Female         = 'FEMA';
+    case Undisclosed    = 'UNDI';
     case None           = '';
 }

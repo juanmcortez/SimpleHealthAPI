@@ -2,10 +2,12 @@
 
 namespace App\Http\Resources\V1\Common;
 
+use App\Enums\PersonaGender;
 use Illuminate\Http\Request;
 use App\Http\Resources\V1\Common\PhoneResource;
 use App\Http\Resources\V1\Common\SocialResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+
 use App\Http\Resources\V1\Common\AddressResource;
 
 class PersonaResource extends JsonResource
@@ -17,11 +19,12 @@ class PersonaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // dd(!empty($this->gender));
         return [
             'FullName'      => $this->full_name,
             'Age'           => $this->age,
             'BirthDate'     => $this->date_of_birth,
-            'Gender'        => $this->gender->name, //This is an ENUM result
+            'Gender'        => PersonaGender::from($this->gender->value)->name,
             'Address'       => new AddressResource($this->address),
             'Phone'         => new PhoneResource($this->phone),
             'CellPhone'     => new PhoneResource($this->cellphone),
