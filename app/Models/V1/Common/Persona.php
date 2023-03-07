@@ -36,6 +36,7 @@ class Persona extends Model
         'id',
         'address_ID',
         'phone_ID',
+        'cellphone_ID',
         'email_ID',
         'created_at',
         'updated_at',
@@ -102,5 +103,27 @@ class Persona extends Model
     public function address()
     {
         return $this->hasOne(Address::class, 'id', 'address_ID')->withDefault();
+    }
+
+
+    /**
+     * This is the relationship between Persona & Phone models
+     *
+     * @return void
+     */
+    public function phone()
+    {
+        return $this->hasOne(Phone::class, 'id', 'phone_ID')->withDefault();
+    }
+
+
+    /**
+     * This is the relationship between Persona & Phone models
+     *
+     * @return void
+     */
+    public function cellphone()
+    {
+        return $this->hasOne(Phone::class, 'id', 'cellphone_ID')->withDefault();
     }
 }
