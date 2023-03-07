@@ -21,7 +21,7 @@ class PersonaFactory extends Factory
         $gender = fake()->randomElement(PersonaGender::cases());
         return [
             'first_name'        => fake()->firstName($gender),
-            'middle_name'       => Str::upper(Str::substr(fake()->name($gender), 0, 1)),
+            'middle_name'       => Str::upper(Str::substr(fake()->firstName($gender), 0, 1)),
             'last_name'         => fake()->lastName(),
             'date_of_birth'     => fake()->dateTimeBetween('-90 years', '-1 month')->format(config('app.format.date')),
             'gender'            => $gender,
