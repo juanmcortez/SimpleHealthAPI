@@ -3,18 +3,12 @@
 namespace App\Http\Resources\V1\Common;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\V1\Common\PhoneResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\V1\Common\AddressResource;
 
 class PersonaResource extends JsonResource
 {
-    /**
-     * Indicates if the resource's collection keys should be preserved.
-     *
-     * @var bool
-     */
-    public $preserveKeys = true;
-
-
     /**
      * Transform the resource into an array.
      *
@@ -23,7 +17,13 @@ class PersonaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'updated'   => $this->updated_at->format(config('app.format.datetime')),
+            'FullName'      => $this->full_name,
+            'Age'           => $this->age,
+            'BirthDate'     => $this->date_of_birth,
+            'Gender'        => $this->gender->name, //This is an ENUM result
+            'Address'       => new AddressResource($this->address),
+            'Phone'         => new PhoneResource($this->phone),
+            'CellPhone'     => new PhoneResource($this->cellphone),
         ];
     }
 }
