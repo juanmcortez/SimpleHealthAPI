@@ -23,6 +23,7 @@ class PatientSeeder extends Seeder
                 $address        = $persona->address->factory()->create();
                 $phone          = $persona->phone->factory()->create();
                 $cellphone      = $persona->phone->factory()->create();
+                $socials        = $persona->socials->factory()->create();
 
                 // Update the parent model
                 $patient->update([
@@ -32,6 +33,7 @@ class PatientSeeder extends Seeder
                     'address_ID'    => $address->id,
                     'phone_ID'      => $phone->id,
                     'cellphone_ID'  => $cellphone->id,
+                    'social_ID'     => $socials->id,
                 ]);
             });
     }
