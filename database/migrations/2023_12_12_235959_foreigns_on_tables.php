@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('address_ID')->references('id')->on('addresses');
             $table->foreign('phone_ID')->references('id')->on('phones');
             $table->foreign('cellphone_ID')->references('id')->on('phones');
+            $table->foreign('social_ID')->references('id')->on('socials');
         });
     }
 

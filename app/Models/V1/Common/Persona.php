@@ -126,4 +126,15 @@ class Persona extends Model
     {
         return $this->hasOne(Phone::class, 'id', 'cellphone_ID')->withDefault();
     }
+
+
+    /**
+     * This is the relationship between Persona & Social models
+     *
+     * @return void
+     */
+    public function socials()
+    {
+        return $this->hasOne(Social::class, 'id', 'social_ID')->withDefault();
+    }
 }

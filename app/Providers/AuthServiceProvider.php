@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\V1\Common\Persona'                  => 'App\Policies\V1\Common\PersonaPolicy',
         'App\Models\V1\Common\Address'                  => 'App\Policies\V1\Common\AddressPolicy',
         'App\Models\V1\Common\Phone'                    => 'App\Policies\V1\Common\PhonePolicy',
+        'App\Models\V1\Common\Social'                   => 'App\Policies\V1\Common\SocialPolicy',
     ];
 
     /**

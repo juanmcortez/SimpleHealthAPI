@@ -6,6 +6,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Custom Items
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'format' => [
+        'date'      => env('APP_DATE', 'Y-m-d H:i'),
+        'time'      => env('APP_TIME', 'Y-m-d H:i'),
+        'datetime'  => env('APP_DATETIME', 'Y-m-d H:i'),
+        'age'       => env('APP_AGE', '%Y years'),
+        'human'     => [
+            'date'      => env('APP_HUMANDATE', 'M d, Y'),
+        ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -70,16 +87,6 @@ return [
     */
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
-
-    'format' => [
-        'date'      => env('APP_DATE', 'Y-m-d H:i'),
-        'time'      => env('APP_TIME', 'Y-m-d H:i'),
-        'datetime'  => env('APP_DATETIME', 'Y-m-d H:i'),
-        'age'       => env('APP_AGE', '%Y years'),
-        'human'     => [
-            'date'      => env('APP_HUMANDATE', 'M d, Y'),
-        ]
-    ],
 
     /*
     |--------------------------------------------------------------------------
