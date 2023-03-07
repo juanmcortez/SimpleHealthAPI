@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('address_ID')->nullable();
             $table->unsignedBigInteger('phone_ID')->nullable();
             $table->unsignedBigInteger('cellphone_ID')->nullable();
-            $table->unsignedBigInteger('email_ID')->nullable();
+            $table->unsignedBigInteger('social_ID')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -4,6 +4,7 @@ namespace App\Http\Resources\V1\Common;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\V1\Common\PhoneResource;
+use App\Http\Resources\V1\Common\SocialResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\V1\Common\AddressResource;
 
@@ -24,6 +25,7 @@ class PersonaResource extends JsonResource
             'Address'       => new AddressResource($this->address),
             'Phone'         => new PhoneResource($this->phone),
             'CellPhone'     => new PhoneResource($this->cellphone),
+            'Socials'       => new SocialResource($this->socials),
         ];
     }
 }
