@@ -18,7 +18,7 @@ class PatientResource extends JsonResource
         return [
             'PID'               => $this->pid,
             'Persona'           => new PersonaResource($this->persona),
-            'Created'           => $this->created_at->format(config('app.format.human.date')),
+            'NewPatientSince'   => $this->created_at->format(config('app.format.human.date')),
         ];
     }
 }
