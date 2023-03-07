@@ -15,7 +15,15 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return PatientResource::collection(Patient::paginate());
+        return PatientResource::collection(
+            Patient::with(
+                [
+                    'persona.address',
+                    'persona.phone',
+                    'persona.cellphone'
+                ]
+            )->paginate()
+        );
     }
 
     /**
@@ -31,7 +39,15 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return new PatientResource($patient);
+        return new PatientResource(
+            $patient->load(
+                [
+                    'persona.address',
+                    'persona.phone',
+                    'persona.cellphone'
+                ]
+            )
+        );
     }
 
     /**
