@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\V1\Common\Persona;
+namespace App\Http\Controllers\V1\Common;
 
 use App\Models\V1\Common\Persona;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePersonaRequest;
-use App\Http\Requests\UpdatePersonaRequest;
+use App\Http\Requests\V1\Common\StorePersonaRequest;
+use App\Http\Requests\V1\Common\UpdatePersonaRequest;
 
 class PersonaController extends Controller
 {
