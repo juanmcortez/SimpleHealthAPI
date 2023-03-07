@@ -8,14 +8,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class AddressResource extends JsonResource
 {
     /**
-     * Indicates if the resource's collection keys should be preserved.
-     *
-     * @var bool
-     */
-    public $preserveKeys = true;
-
-
-    /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>
@@ -23,7 +15,10 @@ class AddressResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'updated'   => $this->updated_at->format(config('app.format.datetime')),
+            'Street'        => $this->street_name . ' ' . $this->street_name_extended,
+            'City'          => $this->city,
+            'StatePostCode' => $this->state . ' ' . $this->postal_code,
+            'Country'       => $this->country_code,
         ];
     }
 }

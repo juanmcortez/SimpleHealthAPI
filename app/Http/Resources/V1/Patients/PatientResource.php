@@ -9,14 +9,6 @@ use App\Http\Resources\V1\Common\PersonaResource;
 class PatientResource extends JsonResource
 {
     /**
-     * Indicates if the resource's collection keys should be preserved.
-     *
-     * @var bool
-     */
-    public $preserveKeys = true;
-
-
-    /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>
@@ -25,8 +17,8 @@ class PatientResource extends JsonResource
     {
         return [
             'PID'               => $this->pid,
-            'persona'           => $this->persona->load(['address']),
-            'created'           => $this->created_at->format(config('app.format.datetime')),
+            'Persona'           => new PersonaResource($this->persona),
+            'Created'           => $this->created_at->format(config('app.format.human.date')),
         ];
     }
 }
