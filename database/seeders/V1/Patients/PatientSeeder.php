@@ -21,6 +21,8 @@ class PatientSeeder extends Seeder
                 // Create the relationship
                 $persona        = $patient->persona->factory()->create();
                 $address        = $persona->address->factory()->create();
+                $phone          = $persona->phone->factory()->create();
+                $cellphone      = $persona->phone->factory()->create();
 
                 // Update the parent model
                 $patient->update([
@@ -28,6 +30,8 @@ class PatientSeeder extends Seeder
                 ]);
                 $persona->update([
                     'address_ID'    => $address->id,
+                    'phone_ID'      => $phone->id,
+                    'cellphone_ID'  => $cellphone->id,
                 ]);
             });
     }
