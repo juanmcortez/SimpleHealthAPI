@@ -21,6 +21,10 @@ return new class extends Migration
             $table->date('date_of_birth')->index();
             $table->string('gender', 12)->nullable()->default('male');
 
+            $table->unsignedBigInteger('address_ID')->nullable();
+            $table->unsignedBigInteger('phone_ID')->nullable();
+            $table->unsignedBigInteger('email_ID')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

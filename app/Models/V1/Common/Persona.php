@@ -4,6 +4,7 @@ namespace App\Models\V1\Common;
 
 use Carbon\Carbon;
 use App\Enums\PersonaGender;
+use App\Models\V1\Common\Address;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -33,6 +34,9 @@ class Persona extends Model
      */
     protected $hidden = [
         'id',
+        'address_ID',
+        'phone_ID',
+        'email_ID',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -68,7 +72,7 @@ class Persona extends Model
     protected function age(): Attribute
     {
         return new Attribute(
-            get: fn () => Carbon::parse($this->date_of_birth)->diff(\Carbon\Carbon::now())->format(config('app.format.age')),
+            get: fn () => Carbon::parse($this->date_of_birth)->diff(Carbon::now())->format(config('app.format.age')),
         );
     }
 
@@ -83,5 +87,20 @@ class Persona extends Model
         return new Attribute(
             get: fn () => (!empty($this->middle_name)) ? $this->last_name . ', ' . $this->first_name . ' ' . $this->middle_name . '.' : $this->last_name . ', ' . $this->first_name,
         );
+    }
+
+
+    /* ************************* */
+    /* ***** RELATIONSHIPS ***** */
+    /* ************************* */
+
+    /**
+     * This is the relationship between Persona & Address models
+     *
+     * @return void
+     */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'id', 'address_ID')->withDefault();
     }
 }
