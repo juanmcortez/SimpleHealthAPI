@@ -19,11 +19,15 @@ class PatientSeeder extends Seeder
             ->create()
             ->each(function ($patient) {
                 // Create the relationship
-                $persona        = $patient->persona()->create();
+                $persona        = $patient->persona->factory()->create();
+                $address        = $persona->address->factory()->create();
 
                 // Update the parent model
                 $patient->update([
                     'persona_ID'    => $persona->id,
+                ]);
+                $persona->update([
+                    'address_ID'    => $address->id,
                 ]);
             });
     }

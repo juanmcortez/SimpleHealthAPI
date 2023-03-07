@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\V1\Patients;
+namespace App\Http\Resources\V1\Common;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\V1\Common\PersonaResource;
 
-class PatientResource extends JsonResource
+class AddressResource extends JsonResource
 {
     /**
      * Indicates if the resource's collection keys should be preserved.
@@ -24,9 +23,7 @@ class PatientResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'PID'               => $this->pid,
-            'persona'           => $this->persona->load(['address']),
-            'created'           => $this->created_at->format(config('app.format.datetime')),
+            'updated'   => $this->updated_at->format(config('app.format.datetime')),
         ];
     }
 }

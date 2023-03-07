@@ -75,6 +75,7 @@ return [
         'date'      => env('APP_DATE', 'Y-m-d H:i'),
         'time'      => env('APP_TIME', 'Y-m-d H:i'),
         'datetime'  => env('APP_DATETIME', 'Y-m-d H:i'),
+        'age'       => env('APP_AGE', '%Y years'),
     ],
 
     /*
