@@ -21,6 +21,7 @@ class PatientFactory extends Factory
         return [
             'persona_ID'        => Persona::factory()->create()->getAttribute('id'),
             'persona_extra_ID'  => PersonaExtra::factory()->create()->getAttribute('id'),
+            'created_at'        => fake()->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

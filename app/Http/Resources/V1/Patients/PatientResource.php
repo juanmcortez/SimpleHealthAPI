@@ -20,7 +20,7 @@ class PatientResource extends JsonResource
             'PID'               => $this->pid,
             'Persona'           => new PersonaResource($this->persona),
             'PersonaExtras'     => new PersonaExtraResource($this->personaExtra),
-            'NewPatientSince'   => $this->created_at->format(config('app.format.human.date')),
+            'PatientSince'      => $this->created_at->format(config('app.format.human.date')),
         ];
     }
 }
