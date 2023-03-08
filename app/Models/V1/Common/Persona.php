@@ -4,6 +4,8 @@ namespace App\Models\V1\Common;
 
 use Carbon\Carbon;
 use App\Enums\PersonaGender;
+use App\Models\V1\Common\Phone;
+use App\Models\V1\Common\Social;
 use App\Models\V1\Common\Address;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
