@@ -14,6 +14,10 @@ class PersonaExtraResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'SocialSecurityNumber'      => $this->social_security_number,
+            'PatientLevelAccession'     => $this->patient_level_accession,
+            'EID'                       => $this->external_ID,
+        ];
     }
 }
