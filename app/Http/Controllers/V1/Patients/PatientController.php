@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\V1\Patients;
 
+use App\Models\V1\Common\Persona;
 use App\Models\V1\Patients\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Patients\PatientResource;
 use App\Http\Requests\V1\Patients\StorePatientRequest;
 use App\Http\Requests\V1\Patients\UpdatePatientRequest;
+use App\Http\Resources\V1\Patients\PatientListResource;
 
 class PatientController extends Controller
 {
@@ -15,15 +17,19 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return PatientResource::collection(
-            Patient::with(
-                [
-                    'persona.address',
-                    'persona.phone',
-                    'persona.cellphone',
-                    'persona.socials',
-                ]
-            )->paginate()
+        return PatientListResource::collection(
+            Persona::with([
+                'patient',
+                'patient.personaExtra',
+                'address',
+                'phone',
+                'cellphone',
+                'socials',
+            ])
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->orderBy('middle_name')
+                ->paginate()
         );
     }
 
@@ -47,6 +53,7 @@ class PatientController extends Controller
                     'persona.phone',
                     'persona.cellphone',
                     'persona.socials',
+                    'personaExtra',
                 ]
             )
         );

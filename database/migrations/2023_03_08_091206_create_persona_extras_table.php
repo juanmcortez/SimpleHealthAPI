@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('patients', function (Blueprint $table) {
-            $table->id('pid');
+        Schema::create('personas_extras', function (Blueprint $table) {
+            $table->id();
 
-            $table->unsignedBigInteger('persona_ID')->nullable()->comment('ID of the model for the persona details');
-            $table->unsignedBigInteger('persona_extra_ID')->nullable();
+            $table->string('social_security_number', 64)->index()->nullable();
+
+            $table->string('external_ID', 64)->index()->nullable();
+            $table->string('patient_level_accession', 64)->index()->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('personas_extras');
     }
 };

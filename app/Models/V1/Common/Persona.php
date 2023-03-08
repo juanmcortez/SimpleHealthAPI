@@ -4,7 +4,10 @@ namespace App\Models\V1\Common;
 
 use Carbon\Carbon;
 use App\Enums\PersonaGender;
+use App\Models\V1\Common\Phone;
+use App\Models\V1\Common\Social;
 use App\Models\V1\Common\Address;
+use App\Models\V1\Patients\Patient;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -94,6 +97,17 @@ class Persona extends Model
     /* ************************* */
     /* ***** RELATIONSHIPS ***** */
     /* ************************* */
+
+    /**
+     * This is the relationship between Persona & Patient models
+     *
+     * @return void
+     */
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'id', 'persona_ID')->withDefault();
+    }
+
 
     /**
      * This is the relationship between Persona & Address models
