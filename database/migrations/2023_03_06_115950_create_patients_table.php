@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('pid');
 
             $table->unsignedBigInteger('persona_ID')->nullable()->comment('ID of the model for the persona details');
+            $table->unsignedBigInteger('persona_extra_ID')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

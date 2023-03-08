@@ -3,6 +3,7 @@
 namespace Database\Factories\V1\Patients;
 
 use App\Models\V1\Common\Persona;
+use App\Models\V1\Common\PersonaExtra;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class PatientFactory extends Factory
     public function definition(): array
     {
         return [
-            'persona_ID'    => Persona::factory()->create()->getAttribute('id'),
+            'persona_ID'        => Persona::factory()->create()->getAttribute('id'),
+            'persona_extra_ID'  => PersonaExtra::factory()->create()->getAttribute('id'),
         ];
     }
 }

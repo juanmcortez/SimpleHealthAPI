@@ -22,6 +22,7 @@ class PatientController extends Controller
                     'persona.phone',
                     'persona.cellphone',
                     'persona.socials',
+                    'personaExtra',
                 ]
             )->paginate()
         );
@@ -47,6 +48,7 @@ class PatientController extends Controller
                     'persona.phone',
                     'persona.cellphone',
                     'persona.socials',
+                    'personaExtra',
                 ]
             )
         );
