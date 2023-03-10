@@ -98,6 +98,7 @@ class Persona extends Model
     /* ***** RELATIONSHIPS ***** */
     /* ************************* */
 
+
     /**
      * This is the relationship between Persona & Patient models
      *

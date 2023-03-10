@@ -19,16 +19,15 @@ class PersonaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // dd(!empty($this->gender));
         return [
             'FullName'      => $this->full_name,
             'Age'           => $this->age,
             'BirthDate'     => $this->date_of_birth,
-            'Gender'        => PersonaGender::from($this->gender->value)->name,
-            'Address'       => new AddressResource($this->address),
-            'Phone'         => new PhoneResource($this->phone),
-            'CellPhone'     => new PhoneResource($this->cellphone),
-            'Socials'       => new SocialResource($this->socials),
+            'Gender'        => $this->when(!empty($this->gender->value), PersonaGender::from($this->gender->value)->name),
+            'Address'       => $this->when(!empty($this->address->street_name), new AddressResource($this->address)),
+            'Phone'         => $this->when(!empty($this->phone->telephone_prefix), new PhoneResource($this->phone)),
+            'CellPhone'     => $this->when(!empty($this->cellphone->telephone_prefix), new PhoneResource($this->cellphone)),
+            'Socials'       => $this->when(!empty($this->socials->email_username), new SocialResource($this->socials)),
         ];
     }
 }
