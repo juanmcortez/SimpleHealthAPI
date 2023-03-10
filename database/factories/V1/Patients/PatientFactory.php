@@ -3,6 +3,7 @@
 namespace Database\Factories\V1\Patients;
 
 use App\Models\V1\Common\Persona;
+use App\Models\V1\Common\Guarantor;
 use App\Models\V1\Common\PersonaExtra;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,6 +22,8 @@ class PatientFactory extends Factory
         return [
             'persona_ID'        => Persona::factory()->create()->getAttribute('id'),
             'persona_extra_ID'  => PersonaExtra::factory()->create()->getAttribute('id'),
+            'guarantor_ID'      => fake()->randomElement([null, Guarantor::factory()->create()->getAttribute('id')]),
+            'created_at'        => fake()->dateTimeBetween('-3 years', 'now'),
         ];
     }
 }

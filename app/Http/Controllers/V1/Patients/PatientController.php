@@ -18,14 +18,14 @@ class PatientController extends Controller
     public function index()
     {
         return PatientListResource::collection(
-            Persona::with([
-                'patient',
-                'patient.personaExtra',
-                'address',
-                'phone',
-                'cellphone',
-                'socials',
-            ])
+            Persona::whereHas('patient')
+                ->with([
+                    'patient.personaExtra',
+                    'address',
+                    'phone',
+                    'cellphone',
+                    'socials',
+                ])
                 ->orderBy('last_name')
                 ->orderBy('first_name')
                 ->orderBy('middle_name')
@@ -54,6 +54,7 @@ class PatientController extends Controller
                     'persona.cellphone',
                     'persona.socials',
                     'personaExtra',
+                    'guarantor',
                 ]
             )
         );

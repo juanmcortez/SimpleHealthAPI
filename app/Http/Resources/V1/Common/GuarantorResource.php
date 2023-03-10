@@ -4,13 +4,13 @@ namespace App\Http\Resources\V1\Common;
 
 use App\Enums\PersonaGender;
 use Illuminate\Http\Request;
+use App\Enums\RelationWPatient;
 use App\Http\Resources\V1\Common\PhoneResource;
 use App\Http\Resources\V1\Common\SocialResource;
 use Illuminate\Http\Resources\Json\JsonResource;
-
 use App\Http\Resources\V1\Common\AddressResource;
 
-class PersonaResource extends JsonResource
+class GuarantorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,6 +20,7 @@ class PersonaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'Relation'      => (empty($this->relation_with_patient)) ? RelationWPatient::None->name : RelationWPatient::from($this->relation_with_patient)->name,
             'FullName'      => $this->full_name,
             'Age'           => $this->age,
             'BirthDate'     => $this->date_of_birth,

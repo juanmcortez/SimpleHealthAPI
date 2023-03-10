@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('patients', function (Blueprint $table) {
-            $table->id('pid');
+        Schema::create('guarantors', function (Blueprint $table) {
+            $table->id();
 
-            $table->unsignedBigInteger('persona_ID')->nullable()->comment('ID of the model for the persona details');
-            $table->unsignedBigInteger('persona_extra_ID')->nullable();
+            $table->unsignedBigInteger('persona_ID')->nullable();
 
-            $table->unsignedBigInteger('guarantor_ID')->nullable();
+            $table->string('relation_with_patient', 24)->default('self')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('patients');
+        Schema::dropIfExists('guarantors');
     }
 };

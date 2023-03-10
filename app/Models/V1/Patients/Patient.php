@@ -3,6 +3,7 @@
 namespace App\Models\V1\Patients;
 
 use App\Models\V1\Common\Persona;
+use App\Models\V1\Common\Guarantor;
 use App\Models\V1\Common\PersonaExtra;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,7 +29,7 @@ class Patient extends Model
      */
     protected $guarded = [
         'pid',
-        'created_at',
+        'updated_at',
     ];
 
 
@@ -55,5 +56,16 @@ class Patient extends Model
     public function personaExtra()
     {
         return $this->hasOne(PersonaExtra::class, 'id', 'persona_extra_ID')->withDefault();
+    }
+
+
+    /**
+     * This is the relationship between Patient & Guarantor models
+     *
+     * @return void
+     */
+    public function guarantor()
+    {
+        return $this->hasOne(Guarantor::class, 'id', 'guarantor_ID')->withDefault();
     }
 }
