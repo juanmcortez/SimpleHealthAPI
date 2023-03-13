@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('persona_extra_ID')->nullable();
 
             $table->unsignedBigInteger('guarantor_ID')->nullable();
+            $table->unsignedBigInteger('employer_ID')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

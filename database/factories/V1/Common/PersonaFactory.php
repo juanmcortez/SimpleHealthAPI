@@ -22,16 +22,30 @@ class PersonaFactory extends Factory
     public function definition(): array
     {
         $gender = fake()->randomElement(PersonaGender::cases())->value;
+        $Address = $Phone = $Cellphone = $Social = null;
+        if (fake()->randomElement([true, false]) === true) {
+            $Address    = Address::factory()->create()->getAttribute('id');
+        }
+        if (fake()->randomElement([true, false]) === true) {
+            $Phone      = Phone::factory()->create()->getAttribute('id');
+        }
+        if (fake()->randomElement([true, false]) === true) {
+            $Cellphone  = Phone::factory()->create()->getAttribute('id');
+        }
+        if (fake()->randomElement([true, false]) === true) {
+            $Social     = Social::factory()->create()->getAttribute('id');
+        }
+
         return [
             'first_name'        => fake()->firstName($gender),
             'middle_name'       => Str::upper(Str::substr(fake()->firstName($gender), 0, 1)),
             'last_name'         => fake()->lastName(),
             'date_of_birth'     => fake()->dateTimeBetween('-90 years', '-1 month')->format(config('app.format.date')),
             'gender'            => $gender,
-            'address_ID'        => Address::factory()->create()->getAttribute('id'),
-            'phone_ID'          => Phone::factory()->create()->getAttribute('id'),
-            'cellphone_ID'      => Phone::factory()->create()->getAttribute('id'),
-            'social_ID'         => Social::factory()->create()->getAttribute('id'),
+            'address_ID'        => $Address,
+            'phone_ID'          => $Phone,
+            'cellphone_ID'      => $Cellphone,
+            'social_ID'         => $Social,
         ];
     }
 }

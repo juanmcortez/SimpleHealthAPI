@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guarantors', function (Blueprint $table) {
+        Schema::create('employers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('relation_with_patient', 24)->default('self')->nullable();
+            $table->string('company_name', 64)->nullable();
+            $table->string('company_position', 64)->nullable();
+
+            $table->unsignedBigInteger('company_address_ID')->nullable();
+            $table->unsignedBigInteger('company_phone_ID')->nullable();
+            $table->unsignedBigInteger('company_fax_ID')->nullable();
 
             $table->unsignedBigInteger('persona_ID')->nullable();
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guarantors');
+        Schema::dropIfExists('employers');
     }
 };

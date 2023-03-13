@@ -1,26 +1,17 @@
 <?php
 
-namespace App\Models\V1\Patients;
+namespace App\Models\V1\Common;
 
+use App\Models\V1\Common\Phone;
+use App\Models\V1\Common\Address;
 use App\Models\V1\Common\Persona;
-use App\Models\V1\Common\Employer;
-use App\Models\V1\Common\Guarantor;
-use App\Models\V1\Common\PersonaExtra;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Patient extends Model
+class Employer extends Model
 {
     use HasFactory, SoftDeletes;
-
-
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'pid';
 
 
     /**
@@ -29,7 +20,8 @@ class Patient extends Model
      * @var array
      */
     protected $guarded = [
-        'pid',
+        'id',
+        'created_at',
         'updated_at',
     ];
 
@@ -40,10 +32,11 @@ class Patient extends Model
      * @var array
      */
     protected $hidden = [
+        'id',
         'persona_ID',
-        'persona_extra_ID',
-        'guarantor_ID',
-        'employer_ID',
+        'company_address_ID',
+        'company_phone_ID',
+        'company_fax_ID',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -54,8 +47,9 @@ class Patient extends Model
     /* ***** RELATIONSHIPS ***** */
     /* ************************* */
 
+
     /**
-     * This is the relationship between Patient & Persona models
+     * This is the relationship between Employer & Persona models
      *
      * @return void
      */
@@ -66,34 +60,34 @@ class Patient extends Model
 
 
     /**
-     * This is the relationship between Patient & PersonaExtra models
+     * This is the relationship between Employer & Address models
      *
      * @return void
      */
-    public function personaExtra()
+    public function companyAddress()
     {
-        return $this->hasOne(PersonaExtra::class, 'id', 'persona_extra_ID')->withDefault();
+        return $this->hasOne(Address::class, 'id', 'company_address_ID')->withDefault();
     }
 
 
     /**
-     * This is the relationship between Patient & Guarantor models
+     * This is the relationship between Employer & Phone models
      *
      * @return void
      */
-    public function guarantor()
+    public function companyPhone()
     {
-        return $this->hasOne(Guarantor::class, 'id', 'guarantor_ID')->withDefault();
+        return $this->hasOne(Phone::class, 'id', 'company_phone_ID')->withDefault();
     }
 
 
     /**
-     * This is the relationship between Patient & Employer models
+     * This is the relationship between Employer & Phone models
      *
      * @return void
      */
-    public function employer()
+    public function companyFax()
     {
-        return $this->hasOne(Employer::class, 'id', 'employer_ID')->withDefault();
+        return $this->hasOne(Phone::class, 'id', 'company_fax_ID')->withDefault();
     }
 }
