@@ -3,6 +3,7 @@
 namespace App\Models\V1\Patients;
 
 use App\Models\V1\Common\Persona;
+use App\Models\V1\Common\Employer;
 use App\Models\V1\Common\Guarantor;
 use App\Models\V1\Common\PersonaExtra;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,22 @@ class Patient extends Model
     protected $guarded = [
         'pid',
         'updated_at',
+    ];
+
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'persona_ID',
+        'persona_extra_ID',
+        'guarantor_ID',
+        'employer_ID',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
 
@@ -67,5 +84,16 @@ class Patient extends Model
     public function guarantor()
     {
         return $this->hasOne(Guarantor::class, 'id', 'guarantor_ID')->withDefault();
+    }
+
+
+    /**
+     * This is the relationship between Patient & Employer models
+     *
+     * @return void
+     */
+    public function employer()
+    {
+        return $this->hasOne(Employer::class, 'id', 'employer_ID')->withDefault();
     }
 }

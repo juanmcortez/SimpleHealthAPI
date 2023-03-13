@@ -55,6 +55,7 @@ class PatientController extends Controller
                     'persona.socials',
                     'personaExtra',
                     'guarantor',
+                    'employer',
                 ]
             )
         );

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('guarantors', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('persona_ID')->nullable();
-
             $table->string('relation_with_patient', 24)->default('self')->nullable();
+
+            $table->unsignedBigInteger('persona_ID')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
