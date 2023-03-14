@@ -43,9 +43,9 @@ class PersonaExtraPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, PersonaExtra $personaExtra): bool
+    public function delete(User $user, PersonaExtra $personaExtra): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class PersonaExtraPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, PersonaExtra $personaExtra): bool
+    public function forceDelete(User $user, PersonaExtra $personaExtra): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

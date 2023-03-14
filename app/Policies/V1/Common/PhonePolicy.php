@@ -43,9 +43,9 @@ class PhonePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Phone $phone): bool
+    public function delete(User $user, Phone $phone): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class PhonePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Phone $phone): bool
+    public function forceDelete(User $user, Phone $phone): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

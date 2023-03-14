@@ -43,9 +43,9 @@ class PatientPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Patient $patient): bool
+    public function delete(User $user, Patient $patient): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class PatientPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Patient $patient): bool
+    public function forceDelete(User $user, Patient $patient): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

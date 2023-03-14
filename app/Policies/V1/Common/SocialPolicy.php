@@ -43,9 +43,9 @@ class SocialPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Social $social): bool
+    public function delete(User $user, Social $social): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class SocialPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Social $social): bool
+    public function forceDelete(User $user, Social $social): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

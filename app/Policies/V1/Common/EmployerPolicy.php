@@ -43,9 +43,9 @@ class EmployerPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Employer $employer): bool
+    public function delete(User $user, Employer $employer): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class EmployerPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Employer $employer): bool
+    public function forceDelete(User $user, Employer $employer): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

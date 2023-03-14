@@ -43,9 +43,9 @@ class AddressPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Address $address): bool
+    public function delete(User $user, Address $address): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class AddressPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Address $address): bool
+    public function forceDelete(User $user, Address $address): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }

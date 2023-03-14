@@ -43,9 +43,9 @@ class GuarantorPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Guarantor $guarantor): bool
+    public function delete(User $user, Guarantor $guarantor): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 
     /**
@@ -59,8 +59,8 @@ class GuarantorPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Guarantor $guarantor): bool
+    public function forceDelete(User $user, Guarantor $guarantor): Response
     {
-        //
+        return Response::denyWithStatus(403);
     }
 }
